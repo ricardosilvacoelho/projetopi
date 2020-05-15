@@ -9,28 +9,10 @@ import java.util.ArrayList;
 import model.Cidade;
 
 
-
 public class CidadeDAO {
 	
 	ArrayList<Cidade> lista = new ArrayList<>();
 	
-	public Cidade carregar (String nome) {
-		Cidade cidade = new Cidade(); 
-		String sqlSelect = "SELECT id, nome FROM clima WHERE cidade.nome = ?";
-		try (Connection conn = ConexaoDB.conectar();
-				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
-			stm.setString(1, nome);
-			try (ResultSet rs = stm.executeQuery();) {
-				if (rs.next()) {
-					cidade.setId(rs.getInt("id"));
-					cidade.setNome(rs.getString("nome"));
-				} 
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return cidade;
-	}
 	public ArrayList<Cidade> listarTodos() {
 		ArrayList<Cidade> cidades = new ArrayList<>();
 		String sqlSelect = "SELECT id, nome FROM cidade";
@@ -49,5 +31,7 @@ public class CidadeDAO {
 		}
 		return cidades;
 	}
+	//Código pronto para banco de dados:
+	//SELECT cidade.nome , clima.temp_inst, data FROM cidade INNER JOIN clima  WHERE cidade.id = 1 AND data BETWEEN '2019-08-25' AND '2019-09-25';
 
 }

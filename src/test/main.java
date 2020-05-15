@@ -14,7 +14,7 @@ public class main {
 		CidadeDAO cidade = new CidadeDAO();
 		ArrayList<Cidade> cd = cidade.listarTodos();
 		for(int i = 0; i < cd.size(); i++) {
-		System.out.println("Id:" + cd.get(i).getId() + " Cidade:" + cd.get(i).getNome());
+		System.out.println("Id:" + cd.get(i).getId() + "  -  " + "Cidade:" + cd.get(i).getNome());
 		}
 	}
 
